@@ -1,0 +1,8 @@
+---
+- name: Add Varnish apt repository.
+  shell: "curl -s https://packagecloud.io/install/repositories/varnishcache/varnish41/script.deb.sh | sudo bash"
+  args:
+    creates: "/etc/apt/sources.list.d/varnishcache_varnish41.list"
+
+- name: Install Varnish.
+  apt: name="{{ varnish_package_name }}" state=installed
